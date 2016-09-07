@@ -1,15 +1,9 @@
 let cheerio = require('cheerio')
 
 import request from './request'
-import wait from './wait'
 
 // 存放发起 request 请求时的配置项
-let options = {
-    uri: '',
-    transform: function (body) {
-        return cheerio.load(body)
-    }
-}
+let options = {}
 
 // 抛出一个方法，接受参数 url 待抓取的网址，默认为 http://wwww.zhongchou.com/browser
 // sort 表示项目的 排序方式，支持的有‘默认’‘最新上线’‘目标金额’‘支持人数’‘筹款额’，不支持正序和逆序的选择。
@@ -19,6 +13,12 @@ export default async(num = 0, sort = '默认', url = 'http://www.zhongchou.com/b
 
     // TODO： 需要判断传入的是否是合法的 url 吗？？？？
 
+    options = {
+        uri: '',
+        transform: function (body) {
+            return cheerio.load(body)
+        }
+    }
     options.waitTime = parseInt(waitTime, 10)
     num = parseInt(num, 10)
 
@@ -104,10 +104,10 @@ function calc(perPageNum, num) {
         }
     }
 
-    // 除了最后一页，需要抓取的页数
-    let grabPageNum = num % perPageNum
     // 最后一页需要抓取的 project 数量
-    let lastPageProjectNum = num - grabPageNum * perPageNum
+    let lastPageProjectNum = num % perPageNum
+    // 除了最后一页，需要抓取的页数
+    let grabPageNum = (num - lastPageProjectNum) / perPageNum
 
     return {
         grabPageNum,

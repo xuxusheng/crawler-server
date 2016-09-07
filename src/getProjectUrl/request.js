@@ -1,6 +1,6 @@
 let rp = require('request-promise')
 
-import wait from './wait'
+import wait from '../lib/wait'
 
 // 开始请求具体的页面
 
