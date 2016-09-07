@@ -1,0 +1,29 @@
+{
+  "name": "crawler-server",
+  "version": "1.0.0",
+  "description": "爬虫gogogo，开始整合服务器！",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xuxusheng/crawler-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuxusheng/crawler-server/issues"
+  },
+  "homepage": "https://github.com/xuxusheng/crawler-server#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-1": "^6.13.0"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1"
+  }
+}
